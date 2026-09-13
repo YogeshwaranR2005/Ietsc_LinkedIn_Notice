@@ -147,7 +147,7 @@ a { color: inherit; }
   padding: 3.4rem 1.5rem 3.2rem;
   text-align: center;
   position: relative;
-  overflow: hidden;
+  overflow-x: hidden; /* clip the decorative ring only, never clip text vertically */
 }
 
 .hero-glow {
@@ -185,10 +185,14 @@ a { color: inherit; }
 .tamil-mark {
   font-family: var(--serif-tamil);
   font-weight: 600;
-  font-size: clamp(3.2rem, 16vw, 5rem);
-  line-height: 1.15;
+  /* Slightly smaller floor on very narrow phones, with generous
+     line-height so Tamil vowel signs above/below the letters
+     never get clipped. */
+  font-size: clamp(2.7rem, 15vw, 5rem);
+  line-height: 1.5;
   color: var(--green-deep);
   margin: 0;
+  padding: 0.15em 0;
   text-shadow: 0 2px 24px rgba(180, 134, 58, 0.18);
 }
 
