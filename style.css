@@ -189,12 +189,11 @@ a { color: inherit; }
 .tamil-mark {
   font-family: var(--serif-tamil);
   font-weight: 600;
-  /* Tamil has no spaces for the browser to break on, so without
-     explicit permission it refuses to wrap and runs off narrow
-     screens instead. overflow-wrap lets it drop to a second line
-     when needed, and the smaller mobile floor keeps that rare. */
-  font-size: clamp(2.1rem, 12.5vw, 5rem);
-  line-height: 1.5;
+  /* Sized to fit on a single line down to ~340px-wide phones.
+     overflow-wrap stays on only as a safety net for anything
+     narrower than that — it should not normally trigger. */
+  font-size: clamp(1.85rem, 9.5vw, 5rem);
+  line-height: 1.4;
   overflow-wrap: anywhere;
   word-break: break-word;
   color: var(--green-deep);
@@ -547,4 +546,10 @@ a { color: inherit; }
   .observe-grid { grid-template-columns: repeat(4, 1fr); }
   .hero { padding: 5rem 1.5rem 4.4rem; }
   .band { padding: 4.4rem 1.5rem; }
+}
+
+@media (max-width: 380px) {
+  /* Extra width budget on the smallest phones, so the Tamil
+     title has the best possible chance of staying on one line. */
+  .hero { padding-left: 1rem; padding-right: 1rem; }
 }
