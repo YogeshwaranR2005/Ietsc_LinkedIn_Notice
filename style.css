@@ -189,11 +189,14 @@ a { color: inherit; }
 .tamil-mark {
   font-family: var(--serif-tamil);
   font-weight: 600;
-  /* Slightly smaller floor on very narrow phones, with generous
-     line-height so Tamil vowel signs above/below the letters
-     never get clipped. */
-  font-size: clamp(2.7rem, 15vw, 5rem);
+  /* Tamil has no spaces for the browser to break on, so without
+     explicit permission it refuses to wrap and runs off narrow
+     screens instead. overflow-wrap lets it drop to a second line
+     when needed, and the smaller mobile floor keeps that rare. */
+  font-size: clamp(2.1rem, 12.5vw, 5rem);
   line-height: 1.5;
+  overflow-wrap: anywhere;
+  word-break: break-word;
   color: var(--green-deep);
   margin: 0;
   padding: 0.15em 0;
